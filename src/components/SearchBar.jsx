@@ -12,7 +12,7 @@ export const SearchBar = ({ addSearch }) => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(inputValue.trim().length < 1) return;
-        addSearch(inputValue.trim(), add);        
+        addSearch(inputValue.trim());        
         setInputValue('');
     }
 

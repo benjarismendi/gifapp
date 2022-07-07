@@ -5,15 +5,14 @@ export const GifTab = ({search, deleteSearch}) => {
 
   const {imagenes, loading} = useFetchGif(search);
 
-  const handleDeleteSearch = () => {
-    deleteSearch(search);
+  const handleDelete = (e) => {
+    deleteSearch(e.target.value)
   }
-
 
   return (
     <>
       
-        <button className="btn btn-danger" onClick={deleteSearch(search, del)}>Eliminar {search}</button>
+        <button className="btn btn-danger" value={search} onClick={handleDelete}>Eliminar {search}</button>
           <div className="tab-pane fade show active" >
             {/* Desplegar Listado */}
             {

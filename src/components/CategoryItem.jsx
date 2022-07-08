@@ -1,7 +1,8 @@
 export const CategoryItem = ( {name, featured, addSearch} ) => {
 
   const style = {
-    backgroundImage: "url(" + featured + ")"
+    backgroundImage: "url(" + featured + ")",
+    
   }
 
   const handleAddSearch = () => {
@@ -9,10 +10,12 @@ export const CategoryItem = ( {name, featured, addSearch} ) => {
   }
   return (
     <>
-      <div className="category-item" style={style} >
-        <a type="button" onClick={handleAddSearch} className="category-title">{name}</a>
+      <div className="category-item" style={style} > 
+      <div className="blur">
+      <a className="category-link" type="button" onClick={handleAddSearch}>{name}</a>
       </div>
-        
+      </div>
+      
     </>
   )
 }

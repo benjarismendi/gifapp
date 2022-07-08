@@ -20,12 +20,10 @@ export const CategoryGrid = ( {addSearch} ) => {
   
     return (
     <>
-        <div className='category-grid'>
             <h3>Categorias</h3>
             {
                 categories.map(category => <CategoryItem key={category.id} {...category} addSearch={addSearch} />)
             }
-        </div>
     </>
   )
 }

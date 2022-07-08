@@ -14,7 +14,7 @@ export const useFetchGif = (search) => {
      
     useEffect(() => {
          getImages()
-    }, [])  
+    }, [imagenes]) 
     
     return {
         imagenes,

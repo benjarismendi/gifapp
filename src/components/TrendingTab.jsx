@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 export const TrendingTab = () => {
   
     const [images, setImages] = useState([]);
-    const [pairElement, setPairElement] = useState(false)
 
     const getImages = async () => {
         const trendings = await getTrending();
@@ -20,9 +19,11 @@ export const TrendingTab = () => {
   
     return (
     <>
+    <div className="tab-panel" >
     {
         images.map(img => <GifItem key={img.id} {...img} /> )
     } 
+    </div>
     </>
   )
 }

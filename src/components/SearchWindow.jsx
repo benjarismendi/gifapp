@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { render } from "react-dom";
 import { useSearchList } from "../hooks/useSearchList"
-import { GifTab, SearchBar } from "./index";
+import { GifTab, SearchBar, CategoryGrid, TrendingTab } from "./index";
 
 
 export const SearchWindow = () => {
@@ -23,9 +24,16 @@ export const SearchWindow = () => {
     
       const handleDeleteSearch = (value) => {
         const index = searches.findIndex((search) => search == value);
-        setSearches([...searches.slice(0,index),
-            ...searches.slice(index + 1, searches.length)]);
-        setActive(searches[0])
+        setSearches([...searches.slice(0, index),
+          ...searches.slice(index + 1, searches.length)]);
+        setActive(() => {
+            if (index > 0) {
+                return searches[index - 1]
+            }
+            if (searches.length > 0) {
+                return searches[index + 1]
+            }
+        })
       };
 
       const handleSetActive = (e) => {
@@ -34,6 +42,10 @@ export const SearchWindow = () => {
     
   return (
     <>
+    {/* Category grid */}
+    <div className="categoryGrid">
+        <CategoryGrid className addSearch={handleAddSearch}/>
+        </div>
     {/* Search Bar */}
     <nav className="navbar">
         <div className="container-fluid">
@@ -42,35 +54,40 @@ export const SearchWindow = () => {
         </div>
 
     {/* Reset Button */}
-    <button className="btn btn-danger btn-reset" onClick={handleReload}>Borrar todas las busquedas</button>
+    {
+        <button className="btn btn-danger btn-reset" onClick={handleReload}>Borrar todas las busquedas</button>
+    }
+    
     </nav>
-
+    
+    <div className="results">
+    <ul className="nav nav-tabs">
     {/* Pestañas */}
-    <ul className="nav nav-tabs" id="myTab" role="tablist">
         {
-        searches.map((search) => {
-            const target = "#" + search;
-
+        searches.length > 0 ?
+            searches.map((search) => {
             let classNames = "nav-link"
             if (active == search) {
                 classNames += " active"
             }
-            const id = search + "-tab"
-            const selected = active == search ? "true" : "false";
-
-            return <li key={search} className={classNames} role="presentation">
+            return <li key={search} className={classNames} >
                 <button className="nav-link"
-                id={id} data-bs-toggle="tab" data-bs-target={target} type="button" role="tab" aria-controls={search} aria-selected={selected} onClick={handleSetActive} value={search}>{search}</button>
+                type="button" onClick={handleSetActive} value={search}>{search}</button>
             </li>
-        })
+        }) :
+        <li key="trending" className="nav-link active" >
+        <button className="nav-link" type="button" value="trending">trending</button>
+        </li>
         }
     </ul>
 
     {/* Active tab */}
     {
-        active ? <GifTab search={active} deleteSearch={handleDeleteSearch}/> : <h1>Aqui veras los resultados</h1>
+        searches.length > 0 ? <GifTab search={active} deleteSearch={handleDeleteSearch}/> : <TrendingTab/>
     }
-
+    </div>
     </>
+
+
   )
 }

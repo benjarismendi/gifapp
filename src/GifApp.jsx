@@ -5,24 +5,24 @@ import { CategoryGrid, TrendingTab, SearchWindow } from "./components";
 export const GifApp = () => {
 
   return (
-    <div id="pagina" className="">
+    <div className="pagina">
 
       {/* Header?? */}
 
       {/* Categories */}
-      <div className="categories">
+      {/* <div className="categories">
         <CategoryGrid />
-      </div>
+      </div> */}
 
       {/* Search window */}
-      <div className="results">
+      <div className="search">
         <SearchWindow />
       </div>
         
       {/* Trending */}
-      <div className="trending">
+      {/* <div className="trending">
         <TrendingTab />
-      </div>
+      </div> */}
         
     </div>
     

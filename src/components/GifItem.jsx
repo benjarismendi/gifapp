@@ -9,9 +9,11 @@ export const GifItem = ({title, fixed_height, fixed_height_still, original}) => 
     }
   
     return (
-        <div className="card">
-            <img onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseEnter} src={mouseOn ? fixed_height_still : original} alt="gif" />
-            <p>{title}</p>
+        <div className="card w-25">
+            <img className="card-img-top" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseEnter} src={mouseOn ? fixed_height_still : fixed_height} alt="gif" />
+            <div className="card-body">
+                <p className="card-text" style={{color: "black"}}>{title}</p>
+            </div>
         </div>
     )
 }

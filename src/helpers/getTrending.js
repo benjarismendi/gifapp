@@ -2,13 +2,11 @@ export const getTrending = async () => {
   
     const API_KEY = 'qX40XdVsBBQ8NJqo7yhe108Xblr4GNoA';
 
-    const url = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${10}&offset=0&rating=g`;
+    const url = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${8}&offset=0&rating=g`;
 
     const resp = await fetch(url);
 
     const {data} = await resp.json();
-
-    console.log("trends: ", data )
   
     const gifs = data.map(img => ({
         id: img.id,

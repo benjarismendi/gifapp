@@ -2,6 +2,7 @@
   "name": "giffapp",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://benjarismendi.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

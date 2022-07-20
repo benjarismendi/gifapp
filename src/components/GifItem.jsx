@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 export const GifItem = ({
   title,
@@ -29,3 +30,8 @@ export const GifItem = ({
     </div>
   );
 };
+
+GifItem.PropTypes = {
+  title: PropTypes.string.isRequired
+  
+}

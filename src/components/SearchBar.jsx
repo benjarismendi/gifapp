@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import PropType from 'prop-types';
 
 export const SearchBar = ({ addSearch }) => {
   const [inputValue, setInputValue] = useState("");
@@ -16,7 +17,7 @@ export const SearchBar = ({ addSearch }) => {
   };
 
   return (
-    <form className="d-flex" onSubmit={handleSubmit}>
+    <form className="d-flex" onSubmit={handleSubmit} aria-label='form'>
       <input
         type="search"
         placeholder="Buscar Gifs"
@@ -30,3 +31,7 @@ export const SearchBar = ({ addSearch }) => {
     </form>
   );
 };
+
+SearchBar.propType = {
+  addSearch: PropType.func.isRequired,
+}

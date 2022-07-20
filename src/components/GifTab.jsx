@@ -29,7 +29,7 @@ export const GifTab = ({ search, deleteSearch, handleReload }) => {
       <div className="tab-panel p-1">
         {/* Desplegar Listado */}
         {loading ? (
-          <div className="spinner-border"> </div>
+          <div className="spinner-border" aria-label="loading"> </div>
         ) : (
           imagenes.map((imagen) => <GifItem key={imagen.id} {...imagen} />)
         )}
